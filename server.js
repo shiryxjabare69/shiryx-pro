@@ -76,7 +76,7 @@ app.post('/upload/:type', upload.single('file'), async (req, res) => {
 
 // 🔥 FINAL WEBSITE SERVE KARNYACHA CODE 🔥
 // (Vite ne banavlela 'dist' folder ithe serve hoil)
-const distPath = path.join(__dirname, '../../dist');
+const distPath = path.join(__dirname, 'dist');
 app.use(express.static(distPath));
 
 app.get(/(.*)/, (req, res) => {
