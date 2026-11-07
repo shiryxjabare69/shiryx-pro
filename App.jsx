@@ -8,10 +8,10 @@ function App() {
   const [savedUser, setSavedUser] = useState(() => localStorage.getItem('adminUser') || 'shiryx')
   const [savedPass, setSavedPass] = useState(() => localStorage.getItem('adminPass') || 'shiryx2026')
 
-  // Client form sathi states
+  // Client form sathi states - Ithe default value Starter thevli ahe
   const [showClientForm, setShowClientForm] = useState(false)
   const [clientData, setClientData] = useState({
-    indexNo: '', clientName: '', mobile: '', email: '', address: '', packageName: 'Basic', totalPayment: ''
+    indexNo: '', clientName: '', mobile: '', email: '', address: '', packageName: 'Starter Plan (₹499/m)', totalPayment: ''
   })
 
   const handleLogin = (e) => {
@@ -55,7 +55,8 @@ function App() {
       
       if(type === 'code') {
         setShowClientForm(false); // form band kar
-        setClientData({indexNo: '', clientName: '', mobile: '', email: '', address: '', packageName: 'Basic', totalPayment: ''}); // form rikam kar
+        // form rikam kar ani default value parat Starter thev
+        setClientData({indexNo: '', clientName: '', mobile: '', email: '', address: '', packageName: 'Starter Plan (₹499/m)', totalPayment: ''}); 
       }
       
     } catch (error) {
@@ -96,11 +97,12 @@ function App() {
               <input type="email" name="email" value={clientData.email} onChange={handleClientFormChange} placeholder="Email ID" className="w-full bg-black border border-white/20 p-2 rounded" required />
               <input type="text" name="address" value={clientData.address} onChange={handleClientFormChange} placeholder="Address" className="w-full bg-black border border-white/20 p-2 rounded" required />
               
-              <select name="packageName" value={clientData.packageName} onChange={handleClientChange} required>
-  <option value="Starter Plan (₹499/m)">Starter Plan (₹499/m)</option>
-  <option value="Pro Plan (₹1,499/m)">Pro Plan (₹1,499/m)</option>
-  <option value="Elite Plan (₹4,999/m)">Elite Plan (₹4,999/m)</option>
-</select>
+              {/* Ithe 'handleClientFormChange' he exact nav vaparlay */}
+              <select name="packageName" value={clientData.packageName} onChange={handleClientFormChange} className="w-full bg-black border border-white/20 p-2 rounded" required>
+                <option value="Starter Plan (₹499/m)">Starter Plan (₹499/m)</option>
+                <option value="Pro Plan (₹1,499/m)">Pro Plan (₹1,499/m)</option>
+                <option value="Elite Plan (₹4,999/m)">Elite Plan (₹4,999/m)</option>
+              </select>
               
               <input type="number" name="totalPayment" value={clientData.totalPayment} onChange={handleClientFormChange} placeholder="Total Payment Aali (₹)" className="w-full bg-black border border-white/20 p-2 rounded" required />
               
